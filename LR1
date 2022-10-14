@@ -1,0 +1,21 @@
+(defn increasingSubsequences [sequence]
+  (loop [arr sequence, i 0]
+    (def subseq [(.get arr i),])
+    (
+     (fn f [arr]
+       (loop [arr arr, j (inc i)]
+           (when (> (.get arr j) (last subseq))
+             (def subseq (conj subseq (.get arr j)))
+             (println subseq)
+             )
+           (when (< j (- (count arr) 1))
+             (recur arr (inc j))
+             )
+          )
+       )arr
+     )
+    (when (< i (- (count arr) 2)) (recur arr (inc i)))
+    )
+  )
+
+(increasingSubsequences [1, 1, 2, 8, 3, 7, 9, 14, 1, 3, 5])
